@@ -44,4 +44,18 @@ export const queryKeys = {
     /** Partidas de um grupo específico */
     matches: (letter: string) => [...queryKeys.groups.all, "matches", letter] as const,
   },
+  teams: {
+    /** Invalida tudo relacionado à feature teams */
+    all: ["teams"] as const,
+    /** Lista de todas as seleções */
+    lists: () => [...queryKeys.teams.all, "list"] as const,
+    /** Detalhe de uma seleção específica */
+    detail: (id: string) => [...queryKeys.teams.all, "detail", id] as const,
+    /** Elenco de uma seleção */
+    players: (id: string) => [...queryKeys.teams.all, "players", id] as const,
+    /** Próximas partidas de uma seleção */
+    schedule: (id: string) => [...queryKeys.teams.all, "schedule", id] as const,
+    /** Resultados recentes de uma seleção */
+    results: (id: string) => [...queryKeys.teams.all, "results", id] as const,
+  },
 } as const;

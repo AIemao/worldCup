@@ -6,6 +6,12 @@ import {
 import { homeMockData } from "@/features/home/data/home.mock";
 import { liveInsightsMockData, liveMatchesMockData } from "@/features/live/data";
 import { matchesMockData } from "@/features/matches/data";
+import {
+  teamPlayersMockData,
+  teamResultsMockData,
+  teamScheduleMockData,
+  teamsMockData,
+} from "@/features/teams/data";
 import { http, HttpResponse } from "msw";
 
 /**
@@ -77,5 +83,32 @@ export const handlers = [
       return new HttpResponse(null, { status: 404 });
     }
     return HttpResponse.json(matches);
+  }),
+
+  // ─── Teams ─────────────────────────────────────────────────────────────────
+  http.get("/teams", () => HttpResponse.json(teamsMockData)),
+
+  http.get("/teams/:teamId", ({ params }) => {
+    const teamId = String(params["teamId"]);
+    const team = teamsMockData.find((t) => t.id === teamId);
+    if (!team) {
+      return new HttpResponse(null, { status: 404 });
+    }
+    return HttpResponse.json(team);
+  }),
+
+  http.get("/teams/:teamId/players", ({ params }) => {
+    const teamId = String(params["teamId"]);
+    return HttpResponse.json(teamPlayersMockData[teamId] ?? []);
+  }),
+
+  http.get("/teams/:teamId/schedule", ({ params }) => {
+    const teamId = String(params["teamId"]);
+    return HttpResponse.json(teamScheduleMockData[teamId] ?? []);
+  }),
+
+  http.get("/teams/:teamId/results", ({ params }) => {
+    const teamId = String(params["teamId"]);
+    return HttpResponse.json(teamResultsMockData[teamId] ?? []);
   }),
 ];

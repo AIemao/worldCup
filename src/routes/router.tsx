@@ -69,7 +69,17 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTES.TEAMS,
-            lazy: () => import("@/pages/NotFoundPage").then((m) => ({ Component: m.NotFoundPage })),
+            lazy: () =>
+              import("@/features/teams/pages/TeamsPage").then((m) => ({
+                Component: m.TeamsPage,
+              })),
+          },
+          {
+            path: `${ROUTES.TEAMS}/:teamId`,
+            lazy: () =>
+              import("@/features/teams/pages/TeamDetailsPage").then((m) => ({
+                Component: m.TeamDetailsPage,
+              })),
           },
           {
             path: ROUTES.STANDINGS,
