@@ -1,26 +1,10 @@
 import { cn } from "@/lib/utils";
-import { cva, type VariantProps } from "class-variance-authority";
 import type { HTMLAttributes, ReactNode } from "react";
+import { cardVariants, type CardVariants } from "./card.variants";
 
 // ─── Card (root) ────────────────────────────────────────────────────────────
 
-const cardVariants = cva("rounded-xl border text-card-foreground transition-colors", {
-  variants: {
-    variant: {
-      default: "bg-card border-border",
-      glass: "bg-background/60 border-border/50 backdrop-blur-md text-foreground",
-      elevated: "bg-card border-border/50 shadow-lg",
-      ghost: "bg-transparent border-border/30 text-foreground",
-    },
-    hoverable: {
-      true: "cursor-pointer hover:border-border/80 hover:bg-card/80 transition-colors",
-      false: "",
-    },
-  },
-  defaultVariants: { variant: "default", hoverable: false },
-});
-
-type CardProps = HTMLAttributes<HTMLDivElement> & VariantProps<typeof cardVariants>;
+type CardProps = HTMLAttributes<HTMLDivElement> & CardVariants;
 
 export function Card({ className, variant, hoverable, ...props }: CardProps) {
   return <div className={cn(cardVariants({ variant, hoverable, className }))} {...props} />;
@@ -67,5 +51,3 @@ type CardFooterProps = HTMLAttributes<HTMLDivElement> & {
 export function CardFooter({ className, ...props }: CardFooterProps) {
   return <div className={cn("flex items-center gap-3 p-6 pt-0", className)} {...props} />;
 }
-
-export { cardVariants };

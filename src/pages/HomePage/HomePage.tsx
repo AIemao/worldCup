@@ -1,22 +1,42 @@
 import { Container } from "@/components/layout/Container";
 import { PageWrapper } from "@/components/layout/PageWrapper";
 import { Section } from "@/components/layout/Section";
+import {
+  CTABlock,
+  FeaturedMatchCard,
+  HeroSection,
+  SectionHeader,
+  StatsBar,
+  useHomeData,
+} from "@/features/home";
 
-// Placeholder — conteúdo real será implementado nas etapas seguintes
 export function HomePage() {
+  const { data } = useHomeData();
+
   return (
     <PageWrapper title="Home — World Cup 2026">
-      <Section spacing="lg">
+      {/* Hero */}
+      <HeroSection />
+
+      {/* Stats */}
+      <StatsBar stats={data.stats} />
+
+      {/* Featured Match */}
+      <Section spacing="xl">
         <Container size="xl">
-          <div className="flex flex-col gap-2">
-            <p className="text-muted-foreground font-mono text-xs tracking-widest uppercase">
-              Coming Soon
-            </p>
-            <h2 className="text-foreground text-3xl font-bold tracking-tight">World Cup 2026</h2>
-            <p className="text-muted-foreground">48 teams. 3 host countries. 104 matches.</p>
+          <div className="flex flex-col gap-10">
+            <SectionHeader
+              label="Opening Match"
+              title="Featured Fixture"
+              description="The 2026 World Cup kicks off with a historic clash between North American rivals."
+            />
+            <FeaturedMatchCard match={data.featuredMatch} />
           </div>
         </Container>
       </Section>
+
+      {/* CTA */}
+      <CTABlock />
     </PageWrapper>
   );
 }

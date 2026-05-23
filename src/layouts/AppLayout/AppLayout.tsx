@@ -1,17 +1,24 @@
 import { Container } from "@/components/layout/Container";
-import { APP_NAME } from "@/config/constants";
+import { AppNav } from "@/components/navigation/AppNav";
+import { APP_NAME, ROUTES } from "@/config/constants";
 import { AnimatePresence, motion } from "framer-motion";
-import { Outlet, useLocation } from "react-router-dom";
+import { Link, Outlet, useLocation } from "react-router-dom";
 
 function AppHeader() {
   return (
     <header className="border-border/50 bg-background/80 sticky top-0 z-50 border-b backdrop-blur-md">
       <Container size="xl">
-        <div className="flex h-14 items-center">
-          <span className="text-foreground text-sm font-semibold tracking-tight">
+        <div className="flex h-14 items-center justify-between">
+          <Link
+            to={ROUTES.HOME}
+            className="text-foreground hover:text-foreground/80 text-sm font-semibold tracking-tight transition-colors"
+            aria-label={APP_NAME}
+          >
             {APP_NAME.split(" ").slice(0, 2).join(" ")}{" "}
             <span className="text-muted-foreground">AI Experience</span>
-          </span>
+          </Link>
+
+          <AppNav className="hidden md:flex" />
         </div>
       </Container>
     </header>
