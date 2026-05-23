@@ -1,0 +1,27 @@
+# CODEOWNERS
+
+# Cada linha define quem é notificado para revisão quando arquivos do padrão são alterados.
+
+# Documentação: https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Proprietário global — revisão obrigatória em qualquer PR
+
+-                               @AIemao
+
+# Workflows de CI — mudanças têm alto impacto
+
+.github/workflows/ @AIemao
+
+# Design system — mudanças afetam toda a UI
+
+src/components/ @AIemao
+
+# Configurações críticas — vite, tsconfig, tailwind
+
+vite.config.ts @AIemao
+tsconfig\*.json @AIemao
+src/index.css @AIemao
+
+# ADRs e documentação de arquitetura
+
+docs/adr/ @AIemao

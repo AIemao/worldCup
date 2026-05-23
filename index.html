@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="World Cup 2026 AI Experience — Live stats, predictions and immersive match coverage."
+    />
+    <title>World Cup 2026</title>
+    <!--
+      Anti-FOUC: aplica o tema ANTES do React renderizar.
+      Lê do mesmo localStorage key usado pelo Zustand persist ('wc26-theme').
+      Deve estar em sync com THEME_STORAGE_KEY em src/config/constants.ts
+    -->
+    <script>
+      try {
+        var stored = JSON.parse(localStorage.getItem("wc26-theme") || "{}");
+        var theme = stored?.state?.theme ?? "dark";
+        var resolved = theme === "light" ? "light" : "dark";
+        document.documentElement.classList.toggle("dark", resolved === "dark");
+      } catch {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
