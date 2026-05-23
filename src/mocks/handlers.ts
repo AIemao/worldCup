@@ -8,6 +8,6 @@ import { http, HttpResponse } from "msw";
  *   http.get('/api/matches', () => HttpResponse.json({ matches: [] }))
  */
 export const handlers = [
-    // handlers serão adicionados conforme as features forem criadas
-    http.get("/api/health", () => HttpResponse.json({ status: "ok" })),
+  // handlers serão adicionados conforme as features forem criadas
+  http.get("/api/health", () => HttpResponse.json({ status: "ok" })),
 ];

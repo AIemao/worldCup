@@ -1,5 +1,5 @@
-import { clsx, type ClassValue } from 'clsx'
-import { twMerge } from 'tailwind-merge'
+import { clsx, type ClassValue } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 /**
  * Combina clsx (classnames condicionais) com tailwind-merge (resolve
@@ -7,5 +7,5 @@ import { twMerge } from 'tailwind-merge'
  * Usado internamente por todos os componentes do shadcn/ui.
  */
 export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }

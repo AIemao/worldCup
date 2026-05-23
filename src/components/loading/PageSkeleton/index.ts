@@ -1,2 +1,1 @@
 export { PageSkeleton } from "./PageSkeleton";
-

@@ -25,9 +25,7 @@ Liste as principais mudanças desta PR de forma objetiva:
 
 -
 -
--
-
----
+- ***
 
 ## Screenshots
 

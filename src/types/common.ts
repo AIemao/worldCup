@@ -3,11 +3,11 @@ import type { ReactNode } from "react";
 // Tipos utilitários comuns usados nos components e layouts
 
 export type WithChildren = {
-    children: ReactNode;
+  children: ReactNode;
 };
 
 export type WithClassName = {
-    className?: string;
+  className?: string;
 };
 
 export type PropsWithClassName<T = object> = T & WithClassName;
