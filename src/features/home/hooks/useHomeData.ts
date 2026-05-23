@@ -1,24 +1,27 @@
-import { homeMockData } from "../data/home.mock";
+import { queryKeys } from "@/api/queries";
+import { getHomeData } from "@/api/services/home";
+import { useQuery } from "@tanstack/react-query";
 import type { HomeData } from "../types/home.types";
 
 type UseHomeDataResult = {
-  data: HomeData;
+  data: HomeData | undefined;
   isLoading: boolean;
   isError: boolean;
+  error: Error | null;
+  refetch: () => void;
 };
 
 /**
- * Camada de acesso aos dados da homepage.
+ * Acessa os dados da homepage via React Query.
  *
- * Hoje retorna mock data diretamente.
- * Na Etapa 06 (Data Layer), este hook será substituído por
- * useQuery + serviço de API + MSW handlers, sem alterar a
- * interface consumida pelos componentes de seção.
+ * Interface pública estável — a implementação interna pode evoluir
+ * (mock → useQuery → SSR) sem alterar os componentes consumidores.
  */
 export function useHomeData(): UseHomeDataResult {
-  return {
-    data: homeMockData,
-    isLoading: false,
-    isError: false,
-  };
+  const { data, isLoading, isError, error, refetch } = useQuery({
+    queryKey: queryKeys.home.data(),
+    queryFn: getHomeData,
+  });
+
+  return { data, isLoading, isError, error, refetch };
 }
