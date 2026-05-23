@@ -1,5 +1,5 @@
 import { cn } from "@/lib/utils";
-import { Globe, Instagram, Twitter } from "lucide-react";
+import { ExternalLink, Globe } from "lucide-react";
 import type { Team } from "../../types/teams.types";
 import { TeamBadge } from "../TeamBadge/TeamBadge";
 
@@ -65,7 +65,7 @@ export function TeamHero({ team, className }: TeamHeroProps) {
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={`${team.name} Twitter`}
                   >
-                    <Twitter className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
                 {team.instagram && (
@@ -76,7 +76,7 @@ export function TeamHero({ team, className }: TeamHeroProps) {
                     className="text-muted-foreground hover:text-foreground transition-colors"
                     aria-label={`${team.name} Instagram`}
                   >
-                    <Instagram className="h-4 w-4" />
+                    <ExternalLink className="h-4 w-4" />
                   </a>
                 )}
               </div>
