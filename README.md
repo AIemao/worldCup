@@ -219,9 +219,9 @@ Decisões de arquitetura documentadas em [`docs/adr/`](docs/adr/):
 | 03    | App shell + routing foundation                                        | ✅     |
 | 04    | Design system foundation                                              | ✅     |
 | 04.5  | Repository & CI foundation                                            | ✅     |
-| 05    | Navigation & Hero section                                             | 🔜     |
-| 06    | Data layer (MSW handlers, React Query hooks, Zod schemas)             | 🔜     |
-| 07    | Match features                                                        | 🔜     |
+| 05    | Navigation & Hero section                                             | ✅     |
+| 06    | Data layer (MSW handlers, React Query hooks, Zod schemas)             | ✅     |
+| 07    | Match features foundation                                             | ✅     |
 | 08    | Teams & Standings                                                     | 🔜     |
 
 ---

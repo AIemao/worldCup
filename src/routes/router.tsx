@@ -27,7 +27,17 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTES.MATCHES,
-            lazy: () => import("@/pages/NotFoundPage").then((m) => ({ Component: m.NotFoundPage })),
+            lazy: () =>
+              import("@/features/matches/pages/MatchesPage").then((m) => ({
+                Component: m.MatchesPage,
+              })),
+          },
+          {
+            path: `${ROUTES.MATCHES}/:matchId`,
+            lazy: () =>
+              import("@/features/matches/pages/MatchDetailsPage").then((m) => ({
+                Component: m.MatchDetailsPage,
+              })),
           },
           {
             path: ROUTES.GROUPS,
