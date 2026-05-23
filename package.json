@@ -20,7 +20,9 @@
     "test:e2e:ui": "playwright test --ui",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
-    "prepare": "husky"
+    "prepare": "husky",
+    "validate": "npm run lint && npm run format:check && npm run typecheck && npm run test:run && npm run build",
+    "validate:ci": "npm ci && npm run validate"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.2.4",
