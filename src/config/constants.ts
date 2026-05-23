@@ -9,6 +9,7 @@ export const ROUTES = {
   HOME: "/",
   GROUPS: "/groups",
   MATCHES: "/matches",
+  LIVE: "/live",
   TEAMS: "/teams",
   STANDINGS: "/standings",
 } as const;

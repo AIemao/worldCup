@@ -1,4 +1,5 @@
 import { homeMockData } from "@/features/home/data/home.mock";
+import { liveInsightsMockData, liveMatchesMockData } from "@/features/live/data";
 import { matchesMockData } from "@/features/matches/data";
 import { http, HttpResponse } from "msw";
 
@@ -26,5 +27,29 @@ export const handlers = [
       return new HttpResponse(null, { status: 404 });
     }
     return HttpResponse.json(match);
+  }),
+
+  // ─── Live ──────────────────────────────────────────────────────────────────
+  http.get("/live", () => HttpResponse.json(liveMatchesMockData)),
+
+  http.get("/live/:matchId", ({ params }) => {
+    const { matchId } = params;
+    const match = liveMatchesMockData.find((m) => m.id === matchId);
+    if (!match) {
+      return new HttpResponse(null, { status: 404 });
+    }
+    return HttpResponse.json(match);
+  }),
+
+  http.get("/live/:matchId/insights", ({ params }) => {
+    const { matchId } = params;
+    if (matchId === liveInsightsMockData.matchId) {
+      return HttpResponse.json(liveInsightsMockData);
+    }
+    return HttpResponse.json({
+      matchId,
+      insights: [],
+      generatedAt: new Date().toISOString(),
+    });
   }),
 ];

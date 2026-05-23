@@ -24,4 +24,14 @@ export const queryKeys = {
     /** Detalhe de um match específico */
     detail: (id: string) => [...queryKeys.matches.all, "detail", id] as const,
   },
+  live: {
+    /** Invalida tudo relacionado à feature live */
+    all: ["live"] as const,
+    /** Lista de partidas ao vivo */
+    lists: () => [...queryKeys.live.all, "list"] as const,
+    /** Detalhe de uma partida ao vivo */
+    detail: (id: string) => [...queryKeys.live.all, "detail", id] as const,
+    /** Insights de uma partida ao vivo */
+    insights: (id: string) => [...queryKeys.live.all, "insights", id] as const,
+  },
 } as const;

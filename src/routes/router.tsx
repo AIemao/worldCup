@@ -40,6 +40,20 @@ export const router = createBrowserRouter([
               })),
           },
           {
+            path: ROUTES.LIVE,
+            lazy: () =>
+              import("@/features/live/pages/LiveCenterPage").then((m) => ({
+                Component: m.LiveCenterPage,
+              })),
+          },
+          {
+            path: `${ROUTES.LIVE}/:matchId`,
+            lazy: () =>
+              import("@/features/live/pages/LiveMatchPage").then((m) => ({
+                Component: m.LiveMatchPage,
+              })),
+          },
+          {
             path: ROUTES.GROUPS,
             lazy: () => import("@/pages/NotFoundPage").then((m) => ({ Component: m.NotFoundPage })),
           },

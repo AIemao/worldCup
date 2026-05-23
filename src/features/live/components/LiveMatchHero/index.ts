@@ -1,0 +1,1 @@
+export { LiveMatchHero } from "./LiveMatchHero";
