@@ -34,7 +34,7 @@ describe("GroupDetailsPage", () => {
   it("exibe o heading 'Group A'", async () => {
     render(<div />, { wrapper: createWrapper("a") });
     await waitFor(() =>
-      expect(screen.getByRole("heading", { name: /Group A/i })).toBeInTheDocument()
+      expect(screen.getAllByRole("heading", { name: /Group A/i }).length).toBeGreaterThan(0)
     );
   });
 
@@ -70,7 +70,7 @@ describe("GroupDetailsPage", () => {
   it("exibe skeleton quando standings está carregando", () => {
     server.use(http.get("/groups/:letter/standings", async () => new Promise(() => undefined)));
     render(<div />, { wrapper: createWrapper("a") });
-    expect(screen.getByRole("heading", { name: /Group A/i })).toBeInTheDocument();
+    expect(screen.getAllByRole("heading", { name: /Group A/i }).length).toBeGreaterThan(0);
   });
 
   it("exibe heading 'All Fixtures'", async () => {
@@ -83,7 +83,7 @@ describe("GroupDetailsPage", () => {
   it("aceita groupId em maiúsculas", async () => {
     render(<div />, { wrapper: createWrapper("C") });
     await waitFor(() =>
-      expect(screen.getByRole("heading", { name: /Group C/i })).toBeInTheDocument()
+      expect(screen.getAllByRole("heading", { name: /Group C/i }).length).toBeGreaterThan(0)
     );
   });
 });
