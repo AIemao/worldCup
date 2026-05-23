@@ -19,7 +19,7 @@ export function HomePage() {
       <HeroSection />
 
       {/* Stats */}
-      <StatsBar stats={data.stats} />
+      {data.stats && <StatsBar stats={data.stats} />}
 
       {/* Featured Match */}
       <Section spacing="xl">
@@ -30,7 +30,7 @@ export function HomePage() {
               title="Featured Fixture"
               description="The 2026 World Cup kicks off with a historic clash between North American rivals."
             />
-            <FeaturedMatchCard match={data.featuredMatch} />
+            {data.featuredMatch && <FeaturedMatchCard match={data.featuredMatch} />}
           </div>
         </Container>
       </Section>
