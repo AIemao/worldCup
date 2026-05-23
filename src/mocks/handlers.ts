@@ -1,3 +1,8 @@
+import {
+  groupMatchesMockData,
+  groupsMockData,
+  groupStandingsMockData,
+} from "@/features/groups/data";
 import { homeMockData } from "@/features/home/data/home.mock";
 import { liveInsightsMockData, liveMatchesMockData } from "@/features/live/data";
 import { matchesMockData } from "@/features/matches/data";
@@ -51,5 +56,26 @@ export const handlers = [
       insights: [],
       generatedAt: new Date().toISOString(),
     });
+  }),
+
+  // ─── Groups ────────────────────────────────────────────────────────────────
+  http.get("/groups", () => HttpResponse.json(groupsMockData)),
+
+  http.get("/groups/:letter/standings", ({ params }) => {
+    const letter = String(params["letter"]).toUpperCase();
+    const standings = groupStandingsMockData[letter];
+    if (!standings) {
+      return new HttpResponse(null, { status: 404 });
+    }
+    return HttpResponse.json(standings);
+  }),
+
+  http.get("/groups/:letter/matches", ({ params }) => {
+    const letter = String(params["letter"]).toUpperCase();
+    const matches = groupMatchesMockData[letter];
+    if (!matches) {
+      return new HttpResponse(null, { status: 404 });
+    }
+    return HttpResponse.json(matches);
   }),
 ];

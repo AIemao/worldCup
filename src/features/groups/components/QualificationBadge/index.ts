@@ -1,0 +1,1 @@
+export { QualificationBadge } from "./QualificationBadge";

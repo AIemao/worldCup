@@ -1,0 +1,1 @@
+export { GroupMatchCard } from "./GroupMatchCard";

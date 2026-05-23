@@ -55,7 +55,17 @@ export const router = createBrowserRouter([
           },
           {
             path: ROUTES.GROUPS,
-            lazy: () => import("@/pages/NotFoundPage").then((m) => ({ Component: m.NotFoundPage })),
+            lazy: () =>
+              import("@/features/groups/pages/GroupsPage").then((m) => ({
+                Component: m.GroupsPage,
+              })),
+          },
+          {
+            path: `${ROUTES.GROUPS}/:groupId`,
+            lazy: () =>
+              import("@/features/groups/pages/GroupDetailsPage").then((m) => ({
+                Component: m.GroupDetailsPage,
+              })),
           },
           {
             path: ROUTES.TEAMS,

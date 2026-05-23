@@ -34,4 +34,14 @@ export const queryKeys = {
     /** Insights de uma partida ao vivo */
     insights: (id: string) => [...queryKeys.live.all, "insights", id] as const,
   },
+  groups: {
+    /** Invalida tudo relacionado à feature groups */
+    all: ["groups"] as const,
+    /** Lista de todos os grupos */
+    lists: () => [...queryKeys.groups.all, "list"] as const,
+    /** Classificação de um grupo específico */
+    standings: (letter: string) => [...queryKeys.groups.all, "standings", letter] as const,
+    /** Partidas de um grupo específico */
+    matches: (letter: string) => [...queryKeys.groups.all, "matches", letter] as const,
+  },
 } as const;
