@@ -19,19 +19,19 @@ jobs:
     name: Playwright E2E
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           cache: "npm"
 
       - name: Install dependencies
-        run: npm ci
+        run: npm install
 
       # Cache dos binários do Playwright — economiza ~300MB de download por run
       - name: Cache Playwright browsers
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.cache/ms-playwright
           key: playwright-${{ runner.os }}-${{ hashFiles('package-lock.json') }}
@@ -48,7 +48,7 @@ jobs:
 
       # Artefato apenas em falha — relatório HTML do Playwright para debug
       - name: Upload Playwright report
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         if: failure()
         with:
           name: playwright-report
